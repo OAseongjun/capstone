@@ -42,7 +42,10 @@ module.exports = function(){
     require('../app/routes/user.api.routes')(app,UserApiRoutes);
     require('./socketio')(io);
 
-   
+   app.get('/', function(req,res) {
+	   res.send('Team EXIT SOS Solution');
+   }); //테스트용라우터
+
 	  return server;	 
    
 }

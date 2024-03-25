@@ -1,0 +1,101 @@
+MongoDB ver: 5.13.17
+server start
+[0mGET / [33m404[0m 4.444 ms - 139[0m
+[0mGET / [33m404[0m 2.775 ms - 139[0m
+[0mGET / [33m404[0m 0.878 ms - 139[0m
+[0mGET / [33m404[0m 0.828 ms - 139[0m
+/home/wns870201/capstone/node_modules/mongoose/lib/connection.js:847
+  const serverSelectionError = new ServerSelectionError();
+                               ^
+
+MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Connection.openUri (/home/wns870201/capstone/node_modules/mongoose/lib/connection.js:847:32)
+    at /home/wns870201/capstone/node_modules/mongoose/lib/index.js:351:10
+    at /home/wns870201/capstone/node_modules/mongoose/lib/helpers/promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (/home/wns870201/capstone/node_modules/mongoose/lib/helpers/promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (/home/wns870201/capstone/node_modules/mongoose/lib/index.js:1149:10)
+    at Mongoose.connect (/home/wns870201/capstone/node_modules/mongoose/lib/index.js:350:20)
+    at module.exports (/home/wns870201/capstone/config/mongoose_config.js:8:23)
+    at Object.<anonymous> (/home/wns870201/capstone/server.js:9:1)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Module._load (node:internal/modules/cjs/loader:1023:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:135:12)
+    at node:internal/main/run_main_module:28:49 {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    setName: null,
+    maxSetVersion: null,
+    maxElectionId: null,
+    servers: Map(3) {
+      'ac-rda3q7s-shard-00-00.odczpuc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-rda3q7s-shard-00-00.odczpuc.mongodb.net:27017',
+        error: [Error: 0068E7FA6F7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1590:SSL alert number 80
+        ] {
+          name: 'MongoNetworkError'
+        },
+        roundTripTime: -1,
+        lastUpdateTime: 1861894,
+        lastWriteDate: null,
+        opTime: null,
+        type: 'Unknown',
+        topologyVersion: undefined,
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: []
+      },
+      'ac-rda3q7s-shard-00-01.odczpuc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-rda3q7s-shard-00-01.odczpuc.mongodb.net:27017',
+        error: [Error: 0068E7FA6F7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1590:SSL alert number 80
+        ] {
+          name: 'MongoNetworkError'
+        },
+        roundTripTime: -1,
+        lastUpdateTime: 1861888,
+        lastWriteDate: null,
+        opTime: null,
+        type: 'Unknown',
+        topologyVersion: undefined,
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: []
+      },
+      'ac-rda3q7s-shard-00-02.odczpuc.mongodb.net:27017' => ServerDescription {
+        address: 'ac-rda3q7s-shard-00-02.odczpuc.mongodb.net:27017',
+        error: [Error: 0068E7FA6F7F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:../deps/openssl/openssl/ssl/record/rec_layer_s3.c:1590:SSL alert number 80
+        ] {
+          name: 'MongoNetworkError'
+        },
+        roundTripTime: -1,
+        lastUpdateTime: 1861966,
+        lastWriteDate: null,
+        opTime: null,
+        type: 'Unknown',
+        topologyVersion: undefined,
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: []
+      }
+    },
+    stale: false,
+    compatible: true,
+    compatibilityError: null,
+    logicalSessionTimeoutMinutes: null,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    commonWireVersion: null
+  }
+}
+
+Node.js v20.11.1

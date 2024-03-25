@@ -9,6 +9,6 @@ module.exports = function (app, UserApiRoutes){
 
   app.route('/master/1').post(userController.userLogs);
   app.route('/master/2').get(userController.userInfo);
-
+//app.route('chartData').get(userController.getChartData);
 
 };

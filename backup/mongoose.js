@@ -5,7 +5,7 @@
 // Load the module dependencies
 var	mongoose = require('mongoose');
 
-	var uri = 'mongodb://localhost:27017/admin'
+	var uri = 'mongodb+srv://test:1234@cluster0.odczpuc.mongodb.net/'
 	function dbfunc() {
 	try {
 		mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
