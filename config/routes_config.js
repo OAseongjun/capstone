@@ -1,6 +1,6 @@
 var config = require('./node_config')
-  , jwt = require('jsonwebtoken'); 
- 
+  , jwt = require('jsonwebtoken') 
+  , bcrypt = require('bcrypt');
  
 exports.userapi = function(req, res, next){ 
 

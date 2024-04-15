@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var UserLogs = mongoose.model('UserLogs')
-   , UserInfo = mongoose.model('UserInfo')
+var UserLogs = require('../models/UserLogs');
+var UserInfo = require('../models/UserInfo');
 
 
 

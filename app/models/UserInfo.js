@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose'), 
-	crypto = require('crypto'),  
+	bcrypt = require('bcrypt'),  
 	Schema = mongoose.Schema;  
 
 var UserSchema = new Schema({  
@@ -16,12 +16,19 @@ var UserSchema = new Schema({
     PASSWORD: {  
 		type: String 
         , required: true 
-  	},    
+  	},
+    PHONE_NUMBER: {
+	    type: String,
+	    required: true,
+	    unique: true,
+	    trim: true,
+    },
+    NAME: {
+	    type: String,
+	    required: true,
+	    trim: true,
+    },
 
-
-  salt: {
-		type: String 
-  },
    
   created: {
 		type: Date, 
@@ -32,28 +39,23 @@ var UserSchema = new Schema({
 
 
 
-UserSchema.pre('save', function(next) {  
-	
-	if (this.PASSWORD) { 
-	
-		this.salt = crypto.randomBytes(128).toString('base64');
-		this.PASSWORD = this.hashPassword(this.PASSWORD);
-	  
-	}
-    	next();
+UserSchema.pre('save', async function(next) {  
+	    if (this.isModified('PASSWORD')) { 
+		            try {
+				                const hashedPassword = await bcrypt.hash(this.PASSWORD, 10); 
+				            } catch (error) {
+						                return next(error);
+						            }
+		        }
+	    next();
 });
 
-UserSchema.methods.hashPassword = function(PASSWORD) {  
-	
-	return crypto.createHash('sha512').update(PASSWORD + this.salt).digest('hex');
+UserSchema.methods.authenticate = async function(PASSWORD) {  
+	    return await bcrypt.compare(PASSWORD, this.PASSWORD); 
 };
 
 
-UserSchema.methods.authenticate = function(PASSWORD) {  
-	return this.PASSWORD === this.hashPassword(PASSWORD);
-};
-
-mongoose.model('UserInfo', UserSchema);  
+module.exports = mongoose.model('UserInfo', UserSchema);  
 
 
 

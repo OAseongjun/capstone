@@ -25,7 +25,7 @@ var UserLogs = new Schema({
 	});
 
 
-mongoose.model('UserLogs', UserLogs);  
+module.exports = mongoose.model('UserLogs', UserLogs);  
 
 
 
